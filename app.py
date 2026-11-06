@@ -314,13 +314,13 @@ def create_admin():
     db.session.commit()
     print(f"Success! Admin account created for {username}.")
 @app.route('/make-admin')
+@app.route('/make-admin')
 def make_admin():
     u = User.query.filter_by(username='admin').first()
     if u:
-        u.role = 'admin'  # Change to u.is_admin = True if your model uses a boolean flag
+        u.role = 'admin'
         db.session.commit()
         return "Admin role granted successfully!"
     return "User 'admin' not found. Please register an account with username 'admin' first."
-
 if __name__ == "__main__":
     app.run(debug=True)
