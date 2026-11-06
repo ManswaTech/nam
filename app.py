@@ -313,6 +313,8 @@ def create_admin():
     db.session.add(admin)
     db.session.commit()
     print(f"Success! Admin account created for {username}.")
+# CORRECT POSITION: Above if __name__ == '__main__':
+
 @app.route('/make-admin')
 def make_admin():
     u = User.query.filter_by(username='admin').first()
@@ -320,6 +322,7 @@ def make_admin():
         u.role = 'admin'
         db.session.commit()
         return "Admin role granted successfully!"
-    return "User 'admin' not found. Please register an account with username 'admin' first."
-if __name__ == "__main__":
+    return "User 'admin' not found."
+
+if __name__ == '__main__':
     app.run(debug=True)
