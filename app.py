@@ -67,7 +67,10 @@ def register():
         password = request.form["password"]
         role = request.form["role"]
 
-        if role not in ["owner", "viewer"]:
+        # AUTO-ASSIGN ADMIN ROLE IF USERNAME IS 'admin'
+        if username.lower() == "admin":
+            role = "admin"
+        elif role not in ["owner", "viewer"]:
             flash("Invalid role selection.")
             return redirect(url_for("register"))
 
