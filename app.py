@@ -314,7 +314,6 @@ def create_admin():
     db.session.commit()
     print(f"Success! Admin account created for {username}.")
 @app.route('/make-admin')
-@app.route('/make-admin')
 def make_admin():
     u = User.query.filter_by(username='admin').first()
     if u:
